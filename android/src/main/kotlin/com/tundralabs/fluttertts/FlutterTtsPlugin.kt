@@ -538,7 +538,10 @@ private fun getLanguages(result: Result) {
             } else {
                 for (locale in Locale.getAvailableLocales()) {
                     if (locale.variant.isEmpty() && isLanguageAvailable(locale)) {
-                        locales.add(locale.toLanguageTag())
+                        val localeMap = HashMap<String, String>()
+                        localeMap["name"] = locale.getDisplayName()
+                        localeMap["tag"] = locale.toLanguageTag()
+                        locales.add(localeMap)
                     }
                 }
             }
